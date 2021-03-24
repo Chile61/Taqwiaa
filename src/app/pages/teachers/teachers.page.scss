@@ -1,0 +1,216 @@
+ion-content {
+  margin-top: 20px; /* Status bar height on iOS 10 */
+  margin-top: constant(safe-area-inset-top); /* Status bar height on iOS 11.0 */
+  margin-top: env(safe-area-inset-top); /* Status bar height on iOS 11+ */
+}
+
+.headSlider {
+  height: 40vh;
+  width: 100%;
+  border-radius: 0 !important;
+}
+
+.top_div {
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+
+  .search_div {
+    padding: 0 7%;
+    position: absolute;
+    z-index: 999;
+    width: 100%;
+  }
+
+  .back_btn {
+    position: relative;
+    background-color: transparent;
+    height: 20px;
+    font-size: 14px;
+    color: white;
+  }
+}
+
+.categories {
+  .categorySlider {
+    .each_div {
+      width: 100px;
+    }
+    img {
+      margin-right: 0px;
+      height: 70px;
+      border-radius: 5px;
+      width: 100%;
+    }
+    .name {
+      margin-bottom: 10px;
+      text-align: left;
+      width: 100%;
+      p {
+        color: gray;
+      }
+    }
+    h5 {
+      font-size: 13px;
+      margin: 5px 0;
+    }
+    p {
+      font-size: 11px;
+      margin: 5px;
+    }
+    .swiper.s-wrapper .swiper-pagination {
+      display: none !important;
+    }
+    .swiper-wrapper {
+      width: 30%;
+    }
+  }
+}
+ion-toolbar {
+  --ion-toolbar-background-color: rgba(252, 252, 252, 0);
+  position: absolute;
+}
+
+:host {
+  input,
+  .searchbar-input.sc-ion-searchbar-md {
+    border-radius: 22px !important;
+  }
+}
+.searchbar-input-container.sc-ion-searchbar-md {
+  border-radius: 22px !important;
+  overflow: hidden !important;
+}
+ion-searchbar {
+  --background: rgb(241 239 239 / 71%);
+  border-radius: 22px;
+  overflow: hidden;
+  padding: 0;
+  z-index: 999;
+}
+.swiper-slide {
+  display: flex;
+  flex-direction: column;
+}
+.categorySlider {
+  margin-top: 10px;
+  display: -webkit-box;
+  overflow: scroll;
+  border-radius: 7px;
+  width: 100%;
+  min-height: 95px;
+  // max-height: 185px;
+}
+.filter {
+  float: right;
+}
+.taq-ar .filter {
+  float: left;
+}
+.item-inner,
+.item-input,
+.item-select,
+.item {
+  background-color: unset !important;
+}
+.item-inner {
+  border-bottom: unset !important;
+}
+.top-title {
+  h5 {
+    display: inline-block;
+    color: darkblue;
+    font-size: 20px;
+    font-weight: 800;
+  }
+}
+.name {
+  h5 {
+    font-size: 14px;
+    margin-top: 5px;
+    margin-bottom: 1px;
+  }
+}
+p {
+  color: darkblue;
+  margin: 0;
+  font-size: 12px;
+}
+.teacher-number {
+  margin: 6px 0 13px 0;
+  color: gray;
+}
+.gold {
+  color: #ffc107;
+  font-size: 15px;
+}
+
+$unchecked-star: "\2606";
+$unchecked-color: #888;
+$checked-star: "\2605";
+$checked-color: #ffa300;
+
+.star-cb-group {
+  /* remove inline-block whitespace */
+  font-size: 0;
+  * {
+    font-size: 12px;
+  }
+  /* flip the order so we can use the + and ~ combinators */
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  & > input {
+    display: none;
+    & + label {
+      /* only enough room for the star */
+      display: inline-block;
+      overflow: hidden;
+      text-indent: 9999px;
+      width: 1em;
+      white-space: nowrap;
+      cursor: pointer;
+      &:before {
+        display: inline-block;
+        text-indent: -9999px;
+        content: $unchecked-star;
+        color: $unchecked-color;
+      }
+    }
+    &:checked ~ label:before,
+    & + label:hover ~ label:before,
+    & + label:hover:before {
+      content: $checked-star;
+      color: #ffa300;
+      text-shadow: 0 0 1px #333;
+    }
+  }
+
+  /* the hidden clearer */
+  & > .star-cb-clear + label {
+    text-indent: -9999px;
+    width: 0.5em;
+    margin-left: -0.5em;
+  }
+  & > .star-cb-clear + label:before {
+    width: 0.5em;
+  }
+
+  &:hover > input + label:before {
+    content: $unchecked-star;
+    color: $unchecked-color;
+    text-shadow: none;
+  }
+  &:hover > input + label:hover ~ label:before,
+  &:hover > input + label:hover:before {
+    content: $checked-star;
+    color: $checked-color;
+    text-shadow: 0 0 1px #333;
+  }
+}
+fieldset {
+  border: 0;
+  padding: 0;
+}
+ion-grid {
+  padding: 0;
+}

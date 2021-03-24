@@ -1,0 +1,186 @@
+<ion-content class="{{ 'lang' | translate }}" *ngIf="info">  
+  <ion-button fill="clear" [style.font-size]="isIPad ? '22px' : '13px'" (click)="navCtrl.pop()">
+    <ion-icon name="chevron-back" slot="icon-only"></ion-icon>
+    {{'back' | translate}}
+  </ion-button>
+
+  <div class="head">
+    <div class="control">
+      <ion-button *ngIf="book && isAuth" class="custom-btn bar-button-md-medium" icon-start (click)="calender(info.id,subjectId)" [style.width]="isIPad ? '200px' : '160px'" [style.height]="isIPad ? '50px' : '35px'">
+        <img src="assets/icon/note.png" class="book-img">
+        {{'Book a Session' | translate}}
+      </ion-button>
+    </div>
+
+    <div class="info" align="center">
+      <img src="{{ image_url }}{{ info.personalImage }}">
+      <h2 margin-vertical text-center [style.font-size]="isIPad ? '35px' : '24px'">
+        {{ language == 'ar' ? info.name_ar : info.name }}
+      </h2>
+      <p color="primary" *ngIf="info.job" style="margin-bottom: 5px;" [style.font-size]="isIPad ? '21px' : '14px'">
+        {{ language == 'ar' ? info.job.job_name : info.job.job_name_english }}
+      </p>
+      <form>
+        <fieldset>
+          <span class="star-cb-group">
+            <ion-icon name="star" class="gold" *ngIf="info.rank > 0" [style.font-size]="isIPad ? '25px' : '13px'"></ion-icon>
+            <ion-icon name="star" class="gold" *ngIf="info.rank > 1" [style.font-size]="isIPad ? '25px' : '13px'"></ion-icon>
+            <ion-icon name="star" class="gold" *ngIf="info.rank > 2" [style.font-size]="isIPad ? '25px' : '13px'"></ion-icon>
+            <ion-icon name="star" class="gold" *ngIf="info.rank > 3" [style.font-size]="isIPad ? '25px' : '13px'"></ion-icon>
+            <ion-icon name="star" class="gold" *ngIf="info.rank > 4" [style.font-size]="isIPad ? '25px' : '13px'"></ion-icon>
+          </span>
+        </fieldset>
+      </form>
+      <img class="flag" src="/assets/img/flags/flag-of-{{info.nationality.country_name}}.png" [style.width]="isIPad ? '55px' : '24px'" [style.height]="isIPad ? '40px' : '18px'">
+    </div>
+
+  </div>
+
+  <div class="content" padding>
+    <div class="common-session">
+      <ion-card color="light" class="no-margin margin-top">
+        <ion-row class="ion-padding" border>
+          <ion-col size="4" align="center">
+            <h2 class="ion-no-margin" [style.font-size]="isIPad ? '35px' : '24px'">
+              {{ info.perHOur ?  info.perHOur : '0'}}
+            </h2>
+            <p class="ion-no-margin" [style.font-size]="isIPad ? '21px' : '14px'">{{ 'kd per hour' | translate }}</p>
+          </ion-col>
+          <ion-col size="4" align="center">
+            <h2 class="ion-no-margin" [style.font-size]="isIPad ? '35px' : '24px'">
+              {{ info.sessions ?  info.sessions : '0'}}
+            </h2>
+            <p class="ion-no-margin" [style.font-size]="isIPad ? '21px' : '14px'">{{ 'Sessions' | translate }}</p>
+          </ion-col>
+          <ion-col size="4" align="center">
+            <h2 class="ion-no-margin" [style.font-size]="isIPad ? '35px' : '24px'">
+              {{ info.students ?  info.students : '0'}}
+            </h2>
+            <p class="ion-no-margin" [style.font-size]="isIPad ? '21px' : '14px'">{{ 'Students' | translate }}</p>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+
+      <ion-card color="light" class="no-margin margin-top">
+        <p item-start class="bar-button-md-dark" style="margin-left: 16px; margin-right: 16px;" [style.font-size]="isIPad ? '21px' : '17px'">
+          {{ 'about' | translate }}
+        </p>
+        <hr color>
+        <ion-card-content margin-vertical>
+          <div class="flex-d">
+            <div class="flex" item-start>
+              <div class="name">
+                <p class="about-description" [style.font-size]="isIPad ? '19px' : '14px'">
+                  {{ language == 'ar' ? info.about_ar : info.about }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card color="light" class="no-margin margin-top" *ngIf="info.personalVideo && info.personalVideo != ''">        
+        <ion-card-content margin-vertical>
+          <video src="{{ image_url }}{{info.personalVideo}}" class="intro" controls playsinline></video>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <div class="subject ion-padding">
+      <div margin-vertical>
+        <h2 class="ion-no-margin" [style.font-size]="isIPad ? '35px' : '24px'">
+          {{ 'Teaching Grade' | translate }}
+        </h2>
+        <p class="small-title" [style.font-size]="isIPad ? '21px' : '14px'">{{info.grades.length}} {{ 'grade' | translate }}</p>
+      </div>
+      <div color="light" *ngIf="info.grades" class="ion-no-margin ion-margin-top">
+        <div class="grades">
+          <ion-row>
+            <ion-col size="6" *ngFor="let grade of info.grades" style="position: relative;" [style.margin-top]="isIPad ? '5px' : '1px'">
+              <span class="each_grade" [style.font-size]="isIPad ? '18px' : '10px'">
+                {{ language == 'ar' ? grade.grade_name : grade.grade_name_english }}
+              </span>
+            </ion-col>
+          </ion-row>          
+        </div>
+      </div>
+    </div>
+
+    <div class="explore ion-padding">
+      <div margin-vertical>
+        <h2 class="ion-no-margin" [style.font-size]="isIPad ? '35px' : '24px'">
+          {{ 'Experience Certificates' | translate }}
+        </h2>
+        <p class="small-title" [style.font-size]="isIPad ? '21px' : '14px'">
+          {{ info.experience_certificate_image.length }} {{ 'Certificates' | translate }}
+        </p>
+      </div>
+
+      <div margin-top slidNone>
+        <div class="swiper-container categorySlider" fxFlex="auto">
+          <ion-slides pager="false" [options]="BannerOption">
+            <ion-slide *ngFor="let slide of info.experience_certificate_image">
+              <div class="each_div">
+                <img class="categorySlider" src="{{ image_url }}{{ slide.image }}">
+              </div>
+            </ion-slide>
+          </ion-slides>
+        </div>
+      </div>
+    </div>
+
+    <div class="reviews" class="ion-margin-top" *ngIf="reviews">
+      <ion-item *ngIf="reviews.length > 0" lines="none">
+        <div slot="start">
+          <h3 class="ion-no-margin" [style.font-size]="isIPad ? '35px' : '24px'">
+            {{ 'Reviews' | translate }}
+          </h3>
+          <p class="ion-no-margin bar-button-md-medium" style="color: gray;" [style.font-size]="isIPad ? '21px' : '15px'">
+            {{ reviews.length }} {{ 'Reviews' | translate }}
+          </p>
+        </div>
+        <ion-button class="ion-no-margin" fill="clear" color="primary" slot="end" (click)="review(info.id)" [style.font-size]="isIPad ? '23px' : '13px'">
+          {{ 'Write a review' | translate }}
+          <ion-icon name="chevron-forward"></ion-icon>
+        </ion-button>
+      </ion-item>
+
+      <div class="ion-padding">
+        <div color="light" *ngFor="let rev of reviews" class="review-container">
+          <ion-item class="reviews-body ion-no-padding" lines="none">
+            <div slot="start">
+              <h3 class="ion-no-margin" [style.font-size]="isIPad ? '23px' : '17px'">
+                {{rev.title}}
+              </h3>
+  
+              <form>
+                <fieldset>
+                  <span class="star-cb-group">
+                    <ion-icon name="star" class="gold" *ngIf="rev.rank > 0" [style.font-size]="isIPad ? '25px' : '13px'"></ion-icon>
+                    <ion-icon name="star" class="gold" *ngIf="rev.rank > 1" [style.font-size]="isIPad ? '25px' : '13px'"></ion-icon>
+                    <ion-icon name="star" class="gold" *ngIf="rev.rank > 2" [style.font-size]="isIPad ? '25px' : '13px'"></ion-icon>
+                    <ion-icon name="star" class="gold" *ngIf="rev.rank > 3" [style.font-size]="isIPad ? '25px' : '13px'"></ion-icon>
+                    <ion-icon name="star" class="gold" *ngIf="rev.rank > 4" [style.font-size]="isIPad ? '25px' : '13px'"></ion-icon>
+                  </span>
+                </fieldset>
+              </form>
+            </div>
+            <div [align]="language == 'en' ? 'right' : 'left'" style="width: 100%;">
+              <h6 class="ion-no-margin">
+                <p class="bar-button-md-dark" [style.font-size]="isIPad ? '23px' : '16px'">
+                  {{rev.name}}
+                </p>
+                <p class="review-date" [style.font-size]="isIPad ? '20px' : '12px'">{{getMonth(rev.created_at)}}</p>
+              </h6>
+            </div>
+          </ion-item>
+          <p class="bar-button-md-dark rev-p" [style.font-size]="isIPad ? '21px' : '12px'">
+            {{rev.description}}
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</ion-content>

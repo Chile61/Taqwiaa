@@ -1,0 +1,81 @@
+<ion-content class="{{ 'lang' | translate }}">
+
+  <div class="content-container">
+    <div class="top_div">
+      <ion-button *ngIf="paramData" fill="clear" class="back_btn" (click)="navCtrl.pop()" [style.font-size]="isIPad ? '22px' : '14px'">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+        {{'back' | translate}}
+      </ion-button>
+
+      <div aling="center" class="search_div" [style.margin-top]="paramData ? '0px' : '10px'">
+        <div>
+          <ion-searchbar placeholder="{{'search' | translate}}" (ionInput)="getItems($event)">
+          </ion-searchbar>
+        </div>
+      </div>
+    </div>    
+
+    <ion-slides *ngIf="slider" #recentSlider [options]="sliderConfig" loop slidesPerView="1">
+      <ion-slide *ngFor="let slide of slider">
+        <div>
+          <img class="headSlider" src="{{ imageUrl }}/{{ slide.image }}">
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <div class="content" class="ion-padding">    
+
+    <ion-row class="top-title">
+      <ion-col size="8" class="ion-align-item-center ion-align-self-center">
+        <h5 class="ion-no-margin" [style.font-size]="isIPad ? '35px' : '20px'">
+          <span color="primary">
+            {{subject_title}}
+          </span>
+        </h5>
+        <p class="teacher-number" [style.font-size]="isIPad ? '26px' : '12px'">
+          {{'you_have' | translate}} {{teachers.length}} {{'teachers' | translate}}
+        </p>
+      </ion-col>
+      <ion-col size="4" class="ion-align-item-center ion-align-self-center">
+        <span color="medium" class="filter" (click)="showRadio2()" [style.font-size]="isIPad ? '33px' : '16px'">
+          {{'filters' | translate}}
+          <ion-icon name="options" style="position: relative; top: 3px;"></ion-icon>
+        </span>
+      </ion-col>
+    </ion-row>
+
+    <div class="cotegories">
+      <section>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="4" (click)="singleTeacher(res.id)" *ngFor="let res of teachers;">
+              <img class="categorySlider" src="{{ imageUrl }}/{{res.personalImage}}" [style.height]="isIPad ? '250px' : '95px'">
+              <div class="name">
+                <h5 [style.font-size]="isIPad ? '26px' : '14px'">
+                  {{ language == 'ar' ? res.name_ar : res.name }}
+                </h5>
+                <div class="ion-no-margin" >
+                  <p class="gray" *ngIf="res.job" [style.font-size]="isIPad ? '25px' : '12px'">
+                    {{ language == 'ar' ? res.job.job_name : res.job.job_name_english }}
+                  </p>
+                </div>
+                <form>
+                  <fieldset style="border: none;">
+                    <span class="star-cb-group">
+                      <ion-icon name="star" class="gold" *ngIf="res.rank > 0"></ion-icon>
+                      <ion-icon name="star" class="gold" *ngIf="res.rank > 1"></ion-icon>
+                      <ion-icon name="star" class="gold" *ngIf="res.rank > 2"></ion-icon>
+                      <ion-icon name="star" class="gold" *ngIf="res.rank > 3"></ion-icon>
+                      <ion-icon name="star" class="gold" *ngIf="res.rank > 4"></ion-icon>
+                    </span>
+                  </fieldset>
+                </form>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </section>
+    </div>
+  </div>
+</ion-content>

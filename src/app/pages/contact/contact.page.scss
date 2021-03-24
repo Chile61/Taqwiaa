@@ -1,0 +1,26 @@
+.toolbar-background {
+  background: #f6f9ff;
+}
+.btn-submit {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  --background: linear-gradient(to left, #14317d, #2b5fe7) !important;
+  --border-radius: 10px;
+}
+.item-inner,
+.item-input,
+.item-select {
+  background-color: unset !important;
+}
+
+ion-toolbar {
+  .tool_btn {
+    font-size: 13px;
+  }
+}
+
+ion-label {
+  font-size: 13px;
+  font-weight: normal;
+}

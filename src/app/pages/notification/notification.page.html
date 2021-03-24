@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" text="{{'back' | translate}}" icon="chevron-back-outline" [style.font-size]="services.isIPad ? '22px' : '13px'"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title [style.font-size]="services.isIPad ? '28px' : '17px'">{{'noti' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="{{ 'lang' | translate }} ion-padding">
+  <ion-card *ngFor="let noti of [1,2,3,4,5,6,7]" class="ion-padding" color="lightC" class="no-margin margin-top">
+    <ion-item lines="none">
+      <h4 class="ion-no-margin">
+        <p class="ion-no-margin" color="primary" [style.font-size]="services.isIPad ? '21px' : '14px'">
+          <ion-icon name="star"></ion-icon>
+          Noti text Noti text Noti text
+        </p>
+      </h4>
+    </ion-item>
+    <hr color>
+    <div align="right" style="padding: 5px 16px 16px;">
+      <p class="ion-no-margin" bold color="primary" [style.font-size]="services.isIPad ? '19px' : '14px'">
+        6:18AM 21-11-2018
+      </p>
+    </div>
+  </ion-card>
+</ion-content>

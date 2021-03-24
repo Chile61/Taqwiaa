@@ -1,0 +1,184 @@
+<ion-content class="{{ 'lang' | translate }}">
+  <!-- style="background-image: url('./../../assets/img/student.jpg')" -->
+  <div class="head">
+    <img [src]="(imageUrl && imageFileName) ? imageUrl + imageFileName : 'assets/img/student.jpg'"
+      class="top-background">
+    <div class="control">
+      <div class="no-margin text-right" (click)="NotiPage()">
+        <ion-button class="top_btn" fill="clear" slot="icon-only" [style.width]="services.isIPad ? '50px' : '40px'"
+          [style.height]="services.isIPad ? '45px' : '35px'">
+          <ion-icon name="notifications" [style.font-size]="services.isIPad ? '30px' : '17px'"></ion-icon>
+        </ion-button>
+      </div>
+      <div class="no-margin text-right" (click)="AccountPage()">
+        <ion-button class="top_btn" fill="clear" slot="icon-only" [style.width]="services.isIPad ? '50px' : '40px'"
+          [style.height]="services.isIPad ? '45px' : '35px'">
+          <ion-icon name="settings" [style.font-size]="services.isIPad ? '30px' : '17px'"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+    <div class="info">
+      <img class="margin-top" src="{{ imageUrl }}{{ imageFileName }}" (click)="AccountPage()">
+      <h2 class="ion-text-center" [style.font-size]="services.isIPad ? '36px' : '24px'">
+        {{ name }}
+      </h2>
+      <p class="ion-no-margin ion-text-center" [style.font-size]="services.isIPad ? '26px' : '16px'">
+        {{ grade }}
+      </p>
+    </div>
+    <br *ngIf="services.isIPad">
+    <ion-grid class="ion-padding" class="footer-head">
+      <ion-row>
+        <ion-col>
+          <button class="custom-btn bar-button-md-medium" block [style.height]="services.isIPad ? '80px' : '65px'">
+            <h2 class="ion-no-margin" text-center [style.font-size]="services.isIPad ? '36px' : '24px'">
+              <p class="ion-no-margin" color="primary">
+                <ion-icon name="calendar"></ion-icon>
+                40 KD
+              </p>
+            </h2>
+            <p class="ion-no-margin bar-button-md-dark" [style.font-size]="services.isIPad ? '22px' : '14px'">
+              {{ 'Buy credit' | translate}}</p>
+          </button>
+        </ion-col>
+
+        <ion-col>
+          <button class="custom-btn bar-button-md-medium" block [style.height]="services.isIPad ? '80px' : '65px'">
+            <h2 class="ion-no-margin" text-center [style.font-size]="services.isIPad ? '36px' : '24px'">
+              <p class="ion-no-margin" color="primary">
+                <!-- <ion-icon name="calendar"></ion-icon> -->
+                <span><img class="top-img" src="assets/icon/note.png"
+                    [style.width]="services.isIPad ? '40px' : '30px'"></span>
+                <span style="position: relative; bottom: 6px;">{{ subjectRequest?.length || '0' }}</span>
+              </p>
+            </h2>
+            <p class="ion-no-margin bar-button-md-dark" [style.font-size]="services.isIPad ? '22px' : '14px'">
+              {{ 'Book a Session' | translate}}</p>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <br>
+  <div class="content ion-padding">
+    <div class="common-session" *ngIf="subjectRequest">
+      <h2 class="ion-no-margin bar-button-md-dark" [style.font-size]="services.isIPad ? '36px' : '24px'">
+        {{ 'Coming Session' | translate}}
+      </h2>
+      <p class="ion-no-margin" class="bar-button-md-medium" [style.font-size]="services.isIPad ? '23px' : '16px'">
+        {{ subjectRequest.length }} {{ 'coming sessions' | translate}}
+      </p>
+
+      <ion-card *ngFor="let subj of subjectRequest" color="light" (click)="singleSubject(subj.subject_id)"
+        class="ion-no-margin ion-margin-top">
+        <div class="ion-padding-start ion-padding-end ion-padding-top">
+          <p item-start color="primary">
+            {{ subj.subject_request_date }} - <span class="bar-button-md-medium">{{ subj.selectedHour }}:00
+              {{ subj.time }}</span>
+          </p>
+        </div>
+        <hr color>
+        <ion-card-content class="ion-padding-top">
+          <div class="flex-d">
+            <div class="details" item-start>
+              <div class="img">
+                <img class="ion-no-margin" src="{{ imageUrl }}{{ subj.teacher.personalImage }}">
+              </div>
+              <div class="name">
+                <h2 class="bar-button-md-medium">
+                  {{ subj.teacher.name }}
+                </h2>
+                <div class="ion-no-margin bar-button-md-medium">
+                  {{ subj.subject.subject_title }}
+                </div>
+              </div>
+            </div>
+
+            <div item-end>
+              <ion-button ion-button class="ion-no-padding" fill="clear" color="primary">
+                <ion-icon name="call"></ion-icon>
+              </ion-button>
+              <ion-button ion-button class="ion-no-padding" fill="clear" color="primary">
+                <ion-icon name="mail"></ion-icon>
+              </ion-button>
+              <ion-button ion-button class="ion-no-padding" fill="clear" color="primary">
+                <ion-icon name="pin"></ion-icon>
+              </ion-button>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+
+    <div class="categories">
+      <section>
+        <div class="subject">
+          <h2 class="ion-margin-top" class="bar-button-md-dark" [style.font-size]="services.isIPad ? '36px' : '24px'">
+            {{ 'Your Subject' | translate}}
+          </h2>
+          <div class="ion-no-margin bar-button-md-dark ">
+            <p [style.font-size]="services.isIPad ? '23px' : '16px'"> {{ subject?.length || '0' }}
+              {{ 'Subjests' | translate}} </p>
+          </div>
+        </div>
+
+        <div>
+          <div class="swiper-container categorySlider" fxFlex="auto">
+            <ion-slides pager="false" [options]="BannerOption">
+              <ion-slide *ngFor="let subj of subject">
+                <div class="each_div" (click)="singleSubject(subj.subject_id)">
+                  <img class="categorySlider" src="{{ imageUrl }}/{{ subj.image }}">
+                  <div class="name">
+                    <h5 class="ion-no-margin" color="primary" [style.font-size]="services.isIPad ? '20px' : '13px'">
+                      {{ language == 'ar' ? subj.subject_title : subj.subject_title_english }}
+                    </h5>
+                    <p color="primary" [style.font-size]="services.isIPad ? '18px' : '11px'">
+                      {{ subj.lecture_count }} {{ 'Teacher' | translate}}
+                    </p>
+                  </div>
+                </div>
+              </ion-slide>
+            </ion-slides>            
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+    <div class="cotegories">
+      <section>
+        <div class="subject">
+          <h2 margin-top class="bar-button-md-dark" [style.font-size]="services.isIPad ? '36px' : '24px'">
+            {{ 'Explore Others' | translate}}
+          </h2>
+          <div class="no-margin bar-button-md-dark ">
+            <p [style.font-size]="services.isIPad ? '23px' : '16px'"> {{ all_subject?.length || '0' }}
+              {{ 'Subjests' | translate}} </p>
+          </div>
+        </div>
+        <ion-grid>
+          <ion-row class="new-cat">
+            <ion-col size="4" *ngFor="let subj of all_subject" (click)="singleSubject(subj.subject_id)"
+              style="text-align: center;">
+              <img class="categorySlider" src="{{ imageUrl }}/{{ subj.image }}">
+              <div class="name">
+                <h5 class="ion-no-margin bar-button-md-dark" [style.font-size]="services.isIPad ? '20px' : '12px'">
+                  {{ language == 'ar' ? subj.subject_title : subj.subject_title_english }}
+                </h5>
+                <div class="ion-no-margin">
+                  <p class="bar-button-md-dark" [style.font-size]="services.isIPad ? '18px' : '10px'">
+                    {{ subj.lecture_count }} {{ 'Teacher' | translate}}
+                  </p>
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </section>
+    </div>
+        
+  </div>
+
+</ion-content>

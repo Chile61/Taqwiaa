@@ -1,0 +1,71 @@
+<ion-content class="{{ 'lang' | translate }}">
+
+  <div class="content-container">
+    <div aling="center" class="search_div">
+      <div>
+        <ion-searchbar placeholder="{{'search' | translate}}" (ionInput)="getItems($event)">
+        </ion-searchbar>
+      </div>
+    </div>
+
+    <ion-slides *ngIf="slider" #recentSlider [options]="sliderConfig" loop slidesPerView="1">
+      <ion-slide *ngFor="let slide of slider">
+        <div>
+          <img class="headSlider" src="{{ imageUrl }}/{{ slide.image }}">
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <div class="content ion-padding">
+
+    <ion-row *ngIf="subject" class="top-title">
+      <ion-col size="6" class="ion-align-item-center ion-align-self-center">
+        <h5 class="ion-no-margin" [style.font-size]="isIPad ? '30px' : '20px'">
+          <span color="primary">
+            {{'top_categories' | translate}}
+          </span>
+        </h5>
+      </ion-col>
+      <ion-col size="6" class="ion-align-item-center ion-align-self-center">
+        <span color="medium" class="filter" (click)="showRadio()" [style.font-size]="isIPad ? '28px' : '16px'">
+          {{'filters' | translate}}
+          <ion-icon name="options" style="position: relative; top: 3px;"></ion-icon>
+        </span>
+      </ion-col>
+    </ion-row>
+
+    <div class="categories">
+      <section *ngFor="let category of subject">
+        <div class="cat-title">
+          <h5 class="ion-no-margin" [style.font-size]="isIPad ? '22px' : '15px'">
+            <p item-start color="primary" style="margin: 10px 0 2px;">
+              {{ language == 'ar' ? category.category_name : category.category_name_english }}
+            </p>
+          </h5>
+        </div>
+
+        <div>
+          <div class="swiper-container categorySlider">
+            <ion-slides pager="false" [options]="BannerOption">
+              <ion-slide *ngFor="let subj of category.subject">
+                <div class="each_div" (click)="singleSubject(subj.subject_id)">
+                  <img src="{{ imageUrl }}/{{ subj.image }}">
+                  <div class="name">
+                    <h5 class="no-margin">
+                      <p color="gray" [style.font-size]="isIPad ? '20px' : '11px'">
+                        {{ language == 'ar' ? subj.subject_title : subj.subject_title_english }}</p>
+                    </h5>
+                    <p color="gray" [style.font-size]="isIPad ? '20px' : '11px'">
+                      {{ subj.lecture_count }} {{'teacher' | translate}}
+                    </p>
+                  </div>
+                </div>
+              </ion-slide>
+            </ion-slides>            
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,467 @@
+ion-content {
+  margin-top: 20px; /* Status bar height on iOS 10 */
+  margin-top: constant(safe-area-inset-top); /* Status bar height on iOS 11.0 */
+  margin-top: env(safe-area-inset-top); /* Status bar height on iOS 11+ */
+}
+
+.categorySlider {
+  // display: -webkit-box;
+  // overflow: scroll;
+
+  img {
+    border: solid 1px #ecb6b6;
+    border-radius: 7px;
+  }
+}
+
+.toolbar-background {
+  background: unset !important;
+}
+.bar-button {
+  background-color: transparent;
+}
+.head {
+  // height: 50vh;
+  .control {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: row-reverse;
+
+    .book-img {
+      width: 25%;
+    }
+  }
+  .footer-head {
+    position: relative;
+    z-index: 2;
+  }
+  .info {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    img {
+      width: 55%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    p {
+      margin: 0;
+    }
+    h2 {
+      margin: 10px 0 2px;
+    }
+  }
+  .custom-btn {
+    outline: none;
+    width: 160px;
+    padding: 0;
+    color: #1559ce;
+    --background: linear-gradient(
+      to right,
+      rgba(250, 250, 250, 0.65),
+      rgba(250, 250, 250, 0.65),
+      rgba(134, 134, 134, 0),
+      rgba(83, 83, 83, 0),
+      rgba(52, 52, 52, 0.34)
+    );
+    border-radius: 12px;
+    display: inline-block !important;
+    margin-top: 0;
+    margin-right: 9px;
+    height: 35px;
+    margin-bottom: 15px;
+  }
+}
+
+.card-ios,
+.card-md {
+  width: calc(100% - 2px);
+  margin: 0;
+}
+
+.button-inner {
+  height: 70%;
+}
+
+.button-ios,
+.button-md {
+  height: 2.2em;
+}
+
+.grades {
+  padding: 0 0px;
+  display: -webkit-box;
+
+  .each_grade {
+    font-size: 10px;
+    background: #0484c1;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 5px;
+    margin: 0;
+  }
+}
+
+.bar-button-md-dark {
+  margin-bottom: 3px;
+}
+
+.review-subject {
+  font-size: 25px;
+  color: #222;
+}
+.item-ios,
+.item-md {
+  padding-left: 0px;
+}
+.md-dark {
+  font-size: 18px;
+  color: black;
+}
+
+.small-title {
+  margin-top: 1px;
+  padding-left: 5px;
+  color: gray;
+}
+
+.review-container {
+  margin: 0px 0 5px 0px;
+  padding: 5px 8px;
+  border: 1px solid #e2e0e0;
+  border-radius: 10px;
+
+  p {
+    margin: 0;
+  }
+
+  .review-date {
+    font-size: 12px;
+    color: gray;
+  }
+
+  h3 {
+    font-size: 17px;
+  }
+}
+
+.about-description {
+  font-size: 15px;
+}
+
+.item-ios.item-block .item-inner,
+.item-md.item-block .item-inner {
+  padding-right: 0;
+  border-bottom: none;
+}
+
+.content {
+  .common-session {
+    ion-row.row {
+      direction: ltr;
+    }
+    ion-card {
+      border-radius: 15px !important;
+      background: white;
+      margin-bottom: 20px !important;
+
+      .card-content-md {
+        padding: 0 10px;
+      }
+      .flex {
+        display: flex;
+        align-items: center;
+        .img {
+          width: 75px;
+          height: 75px;
+          img {
+            width: 65px;
+            height: 65px;
+            object-fit: cover;
+            border-radius: 10px;
+            overflow: hidden;
+          }
+        }
+      }
+    }
+
+    .bar-button-md-medium {
+      font-size: 22px;
+    }
+  }
+}
+.flex-d {
+  display: flex;
+  justify-content: space-between;
+}
+hr {
+  margin: 3px 13px;
+  height: 0px;
+  border-width: 1px;
+  box-sizing: border-box;
+  color: #d2cdcd;
+}
+[grid] {
+  display: flex;
+  justify-content: space-between;
+  > section {
+    width: 24%;
+    img {
+      height: 100px;
+    }
+    h5 {
+      font-size: 12px;
+    }
+    p {
+      font-size: 10px;
+    }
+    &:first-of-type {
+      width: 49%;
+      h5 {
+        font-size: 16px;
+      }
+      p {
+        font-size: 13px;
+      }
+    }
+  }
+}
+[grid2] {
+  display: flex;
+  height: 200px;
+  flex-direction: column;
+  flex-wrap: wrap;
+  section {
+    .img {
+      height: 100%;
+      img {
+        height: 100%;
+      }
+    }
+    margin: 2.5px;
+    &:first-of-type,
+    &:nth-of-type(2) {
+      width: calc(50% - 5px);
+      height: calc(50% - 5px);
+    }
+    &:nth-of-type(3) {
+      width: calc(25% - 5px);
+      height: calc(100% - 5px);
+    }
+    &:nth-of-type(4),
+    &:last-of-type {
+      width: calc(25% - 5px);
+      height: calc(50% - 5px);
+    }
+  }
+}
+
+ion-card {
+  --ion-color-light: #ffffff !important;
+  border-radius: 15px !important;
+}
+
+[border] > ion-col {
+  border-right: 1px solid #ccc;
+  &:last-of-type {
+    border: none;
+  }
+}
+[background]:nth-child(odd) {
+  background-image: linear-gradient(to right bottom, #cfcfcf, #c9c9c9, #959595, #6a6a6a, #454545);
+  border-radius: 10px;
+}
+[background]:nth-child(even) {
+  background-image: linear-gradient(to right bottom, #333, #333, #333, #333, #333);
+  border-radius: 10px;
+}
+
+/* star style */
+// @import "compass/css3";
+
+$unchecked-star: "\2606";
+$unchecked-color: #888;
+$checked-star: "\2605";
+$checked-color: #ffa300;
+
+.star-cb-group {
+  /* remove inline-block whitespace */
+  font-size: 0;
+  * {
+    font-size: 13px;
+  }
+  /* flip the order so we can use the + and ~ combinators */
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  & > span input {
+    display: none;
+    & + label {
+      /* only enough room for the star */
+      display: inline-block;
+      overflow: hidden;
+      text-indent: 9999px;
+      width: 1em;
+      white-space: nowrap;
+      cursor: pointer;
+      &:before {
+        display: inline-block;
+        text-indent: -9999px;
+        content: $unchecked-star;
+        color: $unchecked-color;
+      }
+    }
+    &:checked ~ label:before,
+    & + label:hover ~ label:before,
+    & + label:hover:before {
+      content: $checked-star;
+      color: #ffa300;
+      text-shadow: 0 0 1px #333;
+    }
+  }
+
+  /* the hidden clearer */
+  & > .star-cb-clear + label {
+    text-indent: -9999px;
+    width: 0.5em;
+    margin-left: -0.5em;
+  }
+  & > .star-cb-clear + label:before {
+    width: 0.5em;
+  }
+
+  &:hover > span input + label:before {
+    content: $unchecked-star;
+    color: $unchecked-color;
+    text-shadow: none;
+  }
+  &:hover > span input + label:hover ~ label:before,
+  &:hover > span input + label:hover:before {
+    content: $checked-star;
+    color: $checked-color;
+    text-shadow: 0 0 1px #333;
+  }
+}
+
+// extra styles
+:root {
+  font-size: 2em;
+  font-family: Helvetica, arial, sans-serif;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+}
+#log {
+  margin: 1em auto;
+  width: 5em;
+  text-align: center;
+  background: transparent;
+}
+h1 {
+  text-align: center;
+}
+app-certificates {
+  ion-backdrop,
+  .sc-ion-alert-md {
+    background-color: #ff0 !important;
+    --ion-backdrop-color: #ff0 !important;
+  }
+}
+:host {
+  background-color: #fff !important;
+  --ion-backdrop-color: rgb(18, 0, 154) !important;
+}
+:host {
+  background-color: #fff !important;
+  --ion-backdrop-color: rgb(18, 0, 154) !important;
+}
+.swiper-slide img {
+  height: auto;
+}
+.swiper-wrapper {
+  width: 30%;
+}
+
+.reviews {
+  ion-card {
+    border-radius: 15px !important;
+    background: white !important;
+    margin-bottom: 20px !important;
+    padding: 10px;
+  }
+  ion-item.item {
+    background: unset;
+  }
+  p.title {
+    font-size: 20px;
+  }
+}
+
+.back-btn {
+  font-size: 20px;
+  margin: 20px 15px 10px;
+  text-align: left !important;
+}
+
+.gold {
+  color: #ffc107;
+  font-size: 15px;
+}
+
+.out {
+  font-size: 15px;
+}
+
+.scroll-content {
+  margin-bottom: 50px;
+}
+
+.card-md {
+  box-shadow: 0 2px 31px 0 rgba(0, 0, 0, 0), 0 0px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.rev-p {
+  color: gray;
+  margin-left: 4px !important;
+  font-size: 12px;
+}
+
+img.flag {
+  position: absolute;
+  top: 3px;
+  right: 7px;
+  width: 24px;
+  height: 18px;
+  border-radius: 0px !important;
+}
+
+.name h2 {
+  text-align: center !important;
+}
+.intro {
+  width: 100%;
+  height: 230px;
+  border-radius: 10px;
+}
+
+.each_div {
+  // margin-right: 5px;
+  width: 95%;
+}
+// .taq-en .each_div {
+//   margin-right: 5px;
+// }
+// .taq-ar .each_div {
+//   margin-left: 5px;
+//   margin-right: 0;
+// }

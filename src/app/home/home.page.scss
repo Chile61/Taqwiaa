@@ -1,0 +1,68 @@
+ion-content {
+  --background: linear-gradient(to right bottom, #0445b3, #0d387d, #0c3473, #05265a, #021738) !important;
+  margin-top: 20px; /* Status bar height on iOS 10 */
+  margin-top: constant(safe-area-inset-top); /* Status bar height on iOS 11.0 */
+  margin-top: env(safe-area-inset-top); /* Status bar height on iOS 11+ */
+}
+
+ion-button {
+  --ion-color-contrast: #1f3b68 !important;
+  font-weight: bold;
+}
+.flex {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+p,
+h1 {
+  color: white;
+  // font-family: unset !important;
+}
+.taq-en span {
+  // font-family: unset !important;
+}
+
+.logo {
+  text-align: center !important;
+  margin-top: 20%;
+  img {
+    width: 66%;
+  }
+}
+
+h1 {
+  font-size: 24px;
+}
+p {
+  font-size: 15px;
+  line-height: 2;
+  margin-top: 8%;
+  font-weight: 200 !important;
+}
+.card-content-md,
+.card-content-ios {
+  padding: 9% 6% !important;
+}
+
+.foot_div {
+  position: absolute;
+  width: 100%;
+  bottom: 25px;
+}
+.welcome_btn {
+  width: 80%;
+  color: #0d4fc3;
+  --border-radius: 10px;
+  font-weight: 900;
+  font-family: wave;
+}
+
+.lang_btn {
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  color: white;
+  z-index: 11;
+}

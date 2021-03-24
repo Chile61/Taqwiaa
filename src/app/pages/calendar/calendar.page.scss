@@ -1,0 +1,254 @@
+ion-content {
+  margin-top: 20px; /* Status bar height on iOS 10 */
+  margin-top: constant(safe-area-inset-top); /* Status bar height on iOS 11.0 */
+  margin-top: env(safe-area-inset-top); /* Status bar height on iOS 11+ */
+}
+
+$unchecked-star: "\2606";
+$unchecked-color: #888;
+$checked-star: "\2605";
+$checked-color: #ffa300;
+
+.star-cb-group {
+  /* remove inline-block whitespace */
+  font-size: 0;
+  * {
+    font-size: 12px;
+  }
+  /* flip the order so we can use the + and ~ combinators */
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  & > input {
+    display: none;
+    & + label {
+      /* only enough room for the star */
+      display: inline-block;
+      overflow: hidden;
+      text-indent: 9999px;
+      width: 1em;
+      white-space: nowrap;
+      cursor: pointer;
+      &:before {
+        display: inline-block;
+        text-indent: -9999px;
+        content: $unchecked-star;
+        color: $unchecked-color;
+      }
+    }
+    &:checked ~ label:before,
+    & + label:hover ~ label:before,
+    & + label:hover:before {
+      content: $checked-star;
+      color: #ffa300;
+      text-shadow: 0 0 1px #333;
+    }
+  }
+
+  /* the hidden clearer */
+  & > .star-cb-clear + label {
+    text-indent: -9999px;
+    width: 0.5em;
+    margin-left: -0.5em;
+  }
+  & > .star-cb-clear + label:before {
+    width: 0.5em;
+  }
+
+  &:hover > input + label:before {
+    content: $unchecked-star;
+    color: $unchecked-color;
+    text-shadow: none;
+  }
+  &:hover > input + label:hover ~ label:before,
+  &:hover > input + label:hover:before {
+    content: $checked-star;
+    color: $checked-color;
+    text-shadow: 0 0 1px #333;
+  }
+}
+
+// extra styles
+:root {
+  font-size: 2em;
+  font-family: Helvetica, arial, sans-serif;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+}
+#log {
+  margin: 1em auto;
+  width: 5em;
+  text-align: center;
+  background: transparent;
+}
+h1 {
+  text-align: center;
+}
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .subjName {
+      color: #2b5fe7;
+    }
+  }
+  .img {
+    width: 20%;
+    height: auto;
+    img {
+      width: 100%;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+  }
+  .btn {
+    .hourly {
+      color: gray;
+      font-size: 10px;
+      text-transform: capitalize;
+    }
+  }
+}
+.custom-btn {
+  outline: none;
+  width: 100%;
+  padding: 7px 10px;
+  color: #1559ce;
+  background: linear-gradient(
+    to right bottom,
+    rgba(226, 222, 222, 0.65),
+    rgba(222, 220, 220, 0.65),
+    rgba(134, 134, 134, 0),
+    rgba(83, 83, 83, 0.12),
+    rgba(52, 52, 52, 0.34)
+  );
+  border-radius: 12px;
+  font-size: 13px;
+  border: none;
+  box-shadow: none;
+
+  h2 {
+    font-size: 13px;
+  }
+  .button-inner {
+    display: block !important;
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+}
+ion-card {
+  background: #fff !important;
+}
+
+.today {
+  background: #1559ce;
+  border-radius: 6px;
+  color: white;
+  padding: 0px 8px;
+}
+
+.other_day {
+  margin-top: 8px;
+}
+
+.calendar {
+  span {
+    padding: 0px 8px;
+  }
+  .arrow {
+    display: flex;
+    justify-content: space-between;
+  }
+  .days {
+    display: flex;
+    justify-content: space-around;
+    span {
+      padding: 0px 8px;
+    }
+  }
+  .num {
+    .today {      
+      padding: 3px 8px !important;
+    }
+    .hour {
+      padding-top: 3px;
+      padding-bottom: 3px;
+      font-size: 13px;
+    }
+  }
+}
+.sday {
+  color: gray;
+}
+.num {
+  background: #eee;
+  padding: 5px 0;
+}
+.swiper-pagination {
+  pointer-events: none;
+  display: none;
+}
+.back-btn {
+  font-size: 20px;
+  margin: 15px;
+  text-align: left !important;
+  position: fixed;
+}
+.scroll-content {
+  margin-bottom: 50px;
+}
+
+.btn-submit {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  --background: linear-gradient(to left, #14317d, #2b5fe7) !important;
+  --border-radius: 10px;
+  text-transform: capitalize;
+  
+}
+
+.card-md {
+  width: 100%;
+}
+.gold {
+  color: #ffc107;
+  font-size: 15px;
+}
+
+.cal-en {
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  span {
+    font-family: wave;
+    font-weight: 800;
+  }
+}
+
+.cal-ar {
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: beauty;
+    // text-align: right;
+    direction: rtl;
+  }
+}

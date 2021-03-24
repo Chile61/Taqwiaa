@@ -1,0 +1,37 @@
+ion-item {
+  --background: #efeeeeb8;
+  border-radius: 7px;
+
+  ion-label {
+    padding-left: 10px;
+  }
+}
+
+ion-title {
+  padding: 0 16px;
+}
+
+.btn_div {
+  position: absolute;
+  bottom: 23px;
+  width: 100%;
+
+  ion-button {
+    width: 40%;
+    --background: linear-gradient(to left, #14317d, #2b5fe7) !important;
+    border-radius: 10px;
+  }
+}
+
+.cancel_btn {
+  margin-right: 5%;
+}
+
+.taq-en .cancel_btn {
+  margin-right: 5%;
+}
+
+.taq-ar .cancel_btn {
+  margin-left: 5%;
+  margin-right: 0;
+}

@@ -1,0 +1,67 @@
+<ion-header class="{{ 'lang' | translate }}">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button class="tool_btn" color="dark" text="{{'back' | translate}}" icon="chevron-back-outline" [style.font-size]="services.isIPad ? '22px' : '13px'"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title align="center" [style.font-size]="services.isIPad ? '30px' : '17px'">{{'packages' | translate}}</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button class="tool_btn" fill="clear" color="dark" [style.font-size]="services.isIPad ? '22px' : '13px'">
+        {{'next' | translate}}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" class="{{ 'lang' | translate }}">
+
+  <form (ngSubmit)="onSubmitpackage(f)" #f="ngForm">
+
+    <ion-list radio-group name="pakageId" required>
+      <ion-card *ngFor="let res of packages; let i = index;" color="lightC" class="no-margin margin-top"
+        [ngClass]="(i == selectSection) ? 'selected' : 'non-selected'" [style.margin-top]="services.isIPad ? '3%' : '0px'">       
+
+        <ion-item calss="ion-no-padding" lines="none">
+          <ion-label class="title" [style.font-size]="services.isIPad ? '25px' : '16px'">{{ language == 'ar' ? res.package_name : res.package_name_english }}</ion-label>
+          <ion-radio slot="end" value="{{ res.package_id }}" (click)="getSelectSection(i)"></ion-radio>
+        </ion-item>
+
+        <hr color>
+
+        <ion-card-content>
+          <div class="flex-d">
+            <div class="" item-start>
+              <div>
+                <p class="ion-no-margin" color="primary" [style.font-size]="services.isIPad ? '20px' : '14px'">
+                  - {{'number_of_hours' | translate}} : {{ res.package_hours }} {{'hours' | translate}}
+                </p>
+              </div>
+            </div>
+            <div item-end>
+              <div float-right>
+                <p class="ion-no-margin" bold class="cost" [style.font-size]="services.isIPad ? '20px' : '14px'">
+                  {{'cost' | translate}}: {{ res.package_price}} {{'kd' | translate}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+
+    <div *ngIf="isAuth" align="center">
+      <ion-button class="submit_btn" type="submit" color="primary" shape="round" [style.font-size]="services.isIPad ? '25px' : '16px'" [style.height]="services.isIPad ? '55px' : '35px'">
+        {{'reserve' | translate}}
+      </ion-button>
+    </div>
+
+  </form>
+
+  <div *ngIf="!isAuth" (click)="LoginPage()" align="center">
+    <ion-button class="submit_btn" color="primary" shape="round" [style.font-size]="services.isIPad ? '25px' : '16px'" [style.height]="services.isIPad ? '55px' : '35px'">
+      {{'reserve' | translate}}
+    </ion-button>
+  </div>
+
+</ion-content>

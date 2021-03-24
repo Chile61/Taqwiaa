@@ -1,0 +1,145 @@
+
+ion-toolbar {
+  ion-button {
+    font-size: 14px;
+  }
+}
+/* star style */
+// @import "compass/css3";
+
+$unchecked-star: "\2606";
+$unchecked-color: #888;
+$checked-star: "\2605";
+$checked-color: #ffa300;
+
+.star-cb-group {
+  /* remove inline-block whitespace */
+  font-size: 0;
+  * {
+    font-size: 1rem;
+  }
+  /* flip the order so we can use the + and ~ combinators */
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  & > ion-radio {
+    display: none;
+    & + label {
+      /* only enough room for the star */
+      display: inline-block;
+      overflow: hidden;
+      text-indent: 9999px;
+      width: 3em;
+      white-space: nowrap;
+      cursor: pointer;
+      &:before {
+        display: inline-block;
+        text-indent: -9999px;
+        content: $unchecked-star;
+        color: $unchecked-color;
+        font-size: 40px;
+      }
+    }
+    &:checked ~ label:before,
+    & + label:hover ~ label:before,
+    & + label:hover:before {
+      content: $checked-star;
+      color: #ffa300;
+      text-shadow: 0 0 1px #333;
+    }
+  }
+
+  /* the hidden clearer */
+  & > .star-cb-clear + label {
+    text-indent: -9999px;
+    width: 0.5em;
+    margin-left: -0.5em;
+  }
+  & > .star-cb-clear + label:before {
+    width: 0.5em;
+  }
+
+  &:hover > ion-radio + label:before {
+    content: $unchecked-star;
+    color: $unchecked-color;
+    text-shadow: none;
+  }
+  &:hover > ion-radio + label:hover ~ label:before,
+  &:hover > ion-radio + label:hover:before {
+    content: $checked-star;
+    color: $checked-color;
+    text-shadow: 0 0 1px #333;
+  }
+}
+.checked:before {
+  content: "★" !important;
+  color: #ffa300 !important;
+  text-shadow: 0 0 1px #333;
+}
+
+// extra styles
+:root {
+  font-size: 2em;
+  font-family: Helvetica, arial, sans-serif;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+}
+#log {
+  margin: 1em auto;
+  width: 5em;
+  text-align: center;
+  background: transparent;
+}
+h1 {
+  text-align: center;
+}
+.flex {
+  display: flex;
+  justify-content: center;
+  ion-list {
+    margin: 0px;
+  }
+}
+ion-input, ion-textarea {
+  background: #fff !important;
+  border-radius: 10px !important;
+  padding: 10px !important;
+}
+
+.reviews {
+  margin-top: 20%;
+}
+
+parea {
+  background: #fff !important;
+  border-radius: 10px !important;
+  padding: 10px !important;
+  min-height: 200px;
+}
+.toolbar-background {
+  background: unset !important;
+}
+.bar-button {
+  background-color: transparent;
+}
+.back-btn {
+  font-size: 20px;
+  text-align: left !important;
+}
+.bar-button-md-medium,
+.bar-button-ios-medium {
+  margin-top: 0px;
+  color: gray;
+}
+.text-input-md,
+.text-input-ios {
+  margin: 30px 8px 0px 8px;
+}
+.review-title {
+  padding-left: 0px;
+  .text-input {
+    margin: 30px 8px 0px 11px !important;
+  }
+}

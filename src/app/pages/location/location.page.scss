@@ -1,0 +1,74 @@
+ion-list {
+  margin: 0 !important;
+}
+
+#please-connect {
+  position: absolute;
+  background-color: #000;
+  opacity: 0.5;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+#please-connect p {
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    font-size: 1.6em;
+    top: 30%;
+}
+
+#map_canvas {
+  width: 90%;
+  height: 80%;
+  border: 1px solid red;
+}
+#map {
+  width: 100%;
+  height: 100%;
+}
+.map-wrapper {
+  position: relative;
+  height: 100%;
+ 
+  #map_center {
+    position: absolute;
+    z-index: 99;
+    height: 40px;
+    width: 40px;
+    top: 50%;
+    left: 50%;
+    margin-left: -21px;
+    margin-top: -41px;
+  }
+}
+
+.scroll-content {
+    overflow: hidden;
+}
+
+ion-searchbar{
+  // position: absolute;
+  // z-index: 999;
+  padding: 8px 8px !important;
+}
+
+.searchbar-input {
+  background-color: rgb(255, 255, 255) !important;
+  border-radius: 10px !important;
+}
+
+.searchbar-md .searchbar-search-icon, .searchbar-ios .searchbar-search-icon {
+  left: 16px;
+  top: 13px;
+  background-image: url('../../../assets/icon/menu.png');
+  width: 21px;
+  height: 21px;
+}
+.search-content {
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+}

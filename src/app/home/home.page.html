@@ -1,0 +1,35 @@
+<ion-content class="bg {{ 'lang' | translate }}">
+  <div class="ion-padding ">
+    <ion-button fill="clear" class="lang_btn" (click)="changeLang()" [style.font-size]="services.isIPad ? '30px' : '17px'">
+      <ion-icon name="language"></ion-icon>
+    </ion-button>
+
+    <div class="logo">      
+      <img src="/assets/img/logo.png">
+      <ion-card-content>
+        <h1 align="center" class="ion-padding-bottom" [style.font-size]="services.isIPad ? '30px' : '24px'">
+          {{ 'welcome' | translate }}
+        </h1>
+
+        <div align="center">
+          <p color="light" [style.font-size]="services.isIPad ? '23px' : '15px'">
+            {{'taq_app_in' | translate}} {{'providing_educational' | translate}} {{'opportunities' | translate}}
+          </p>
+        </div>
+      </ion-card-content>
+    </div>        
+  </div>
+
+  <div class="foot_div">
+    <div align="center">
+      <ion-row>
+        <ion-col>
+          <ion-button class="welcome_btn" color="light" (click)="goToHome()" [style.font-size]="services.isIPad ? '27px' : '16px'">{{'discover' | translate}}</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button class="welcome_btn" color="light" (click)="goToLogin()" [style.font-size]="services.isIPad ? '27px' : '16px'">{{'login' | translate}}</ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>

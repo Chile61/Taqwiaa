@@ -1,0 +1,91 @@
+<ion-header class="{{ 'lang' | translate }} no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="light" text="{{'back' | translate}}" icon="chevron-back-outline" [style.font-size]="services.isIPad ? '21px' : '13px'"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="{{ 'lang' | translate }}">
+
+  <div class="bgTop ion-padding">
+
+    <form (ngSubmit)="onSubmitEdit(f)" #f="ngForm">
+
+      <div class="flex">
+        <div align="center">
+          <h1 class="ion-no-margin" [style.font-size]="services.isIPad ? '38px' : '26px'">
+            <span fill="solid" bold color="primary">{{'account' | translate}}</span>
+          </h1>
+          <p class="ion-no-margin" [style.font-size]="services.isIPad ? '24px' : '16px'">
+            <span color="medium">{{'complete_data'|translate}}</span>
+          </p>
+        </div>
+
+        <div>
+          <ion-list>
+            <ion-item class="ion-no-padding">
+              <ion-label position="floating" color="medium" [style.font-size]="services.isIPad ? '24px' : '13px'">{{'name' | translate}}</ion-label>
+              <ion-input [(ngModel)]="name" type="text" name="name" required [style.font-size]="services.isIPad ? '28px' : '17px'"></ion-input>
+            </ion-item>
+
+            <ion-item class="ion-no-padding">
+              <ion-label position="floating" color="medium" [style.font-size]="services.isIPad ? '24px' : '13px'">{{'phone' | translate}}</ion-label>
+              <ion-input [(ngModel)]="phone" type="tel" name="phone" required [style.font-size]="services.isIPad ? '28px' : '17px'"></ion-input>
+            </ion-item>
+
+            <ion-item class="ion-no-padding">
+              <ion-label position="floating" color="medium" [style.font-size]="services.isIPad ? '24px' : '13px'">{{'educational_level' | translate}}</ion-label>
+              <ion-select [(ngModel)]="education_level_id" name="education_level_id" required [style.font-size]="services.isIPad ? '28px' : '17px'">
+                <ion-select-option *ngFor="let res of education ;" value="{{ res.education_level_id }}">
+                  {{ language == 'ar' ? res.education_level_name : res.education_level_name_english }}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item class="ion-no-padding">
+              <ion-label position="floating" color="medium" [style.font-size]="services.isIPad ? '24px' : '13px'">{{'grade' | translate}}</ion-label>
+              <ion-select [(ngModel)]="grade_id" name="grade_id" required [style.font-size]="services.isIPad ? '28px' : '17px'">
+                <ion-select-option *ngFor="let res of grade ;" value="{{ res.grade_id }}">
+                  {{ language == 'ar' ? res.grade_name : res.grade_name_english }}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item class="ion-no-padding">
+              <ion-label position="floating" color="medium" [style.font-size]="services.isIPad ? '24px' : '13px'">{{'school_area' | translate}}</ion-label>
+              <ion-input [(ngModel)]="school_area" type="text" name="school_area" required [style.font-size]="services.isIPad ? '28px' : '17px'"></ion-input>
+            </ion-item>
+
+            <ion-item class="ion-no-padding">
+              <ion-label position="floating" color="medium" [style.font-size]="services.isIPad ? '24px' : '13px'">{{'school_name' | translate}}</ion-label>
+              <ion-input [(ngModel)]="school_name" type="text" name="school_name" required [style.font-size]="services.isIPad ? '28px' : '17px'"></ion-input>
+            </ion-item>
+
+            <ion-item class="ion-no-padding">
+              <ion-label position="floating" color="medium" [style.font-size]="services.isIPad ? '24px' : '13px'">{{'relationship' | translate}}</ion-label>
+              <ion-select [(ngModel)]="relation_id" name="relation_id" required [style.font-size]="services.isIPad ? '28px' : '17px'">
+                <ion-select-option *ngFor="let res of relation ;" value="{{ res.relation_id }}">
+                  {{ language == 'ar' ? res.relation_name : res.relation_name_english }}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+            <br>
+            <div class="upload ion-no-padding" (click)="openGallery()" align="center">
+              <img src="{{imageFileName}}" [width]="services.isIPad ? '200' : '100'" [height]="services.isIPad ? '200' : '100'" />
+            </div>
+          </ion-list>
+        </div>
+        <br>
+        <div class="ion-padding-bottom" align="center">
+          <ion-button class="btn-submit" type="submit" [disabled]="!f.valid" shape="round" [style.font-size]="services.isIPad ? '26px' : '16px'">
+            {{'complete' | translate}}
+          </ion-button>
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+
+</ion-content>

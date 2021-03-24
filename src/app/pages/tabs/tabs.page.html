@@ -1,0 +1,25 @@
+<ion-tabs selectedIndex="1" (ionTabsDidChange)="tabChanged($event)">
+
+	<ion-tab-bar slot="bottom">
+		<ion-tab-button tab="profile">
+			<img [src]="profileIcon"> 
+			<!-- <ion-label>{{'home' | translate}}</ion-label> -->
+		</ion-tab-button>		
+
+		<ion-tab-button tab="categories">
+			<img [src]="teachersIcon">
+			<!-- <ion-label>{{'repayment' | translate}}</ion-label> -->
+		</ion-tab-button>
+
+		<ion-tab-button tab="teachers">
+			<img [src]="groupIcon"> 
+			<!-- <ion-label>{{'report' | translate}}</ion-label> -->
+		</ion-tab-button>
+
+		<ion-tab-button tab="settings">
+			<img [src]="settinsIcon">
+			<!-- <ion-label>{{'account' | translate}}</ion-label> -->
+		</ion-tab-button>
+	</ion-tab-bar>
+
+</ion-tabs>

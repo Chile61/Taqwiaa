@@ -1,0 +1,105 @@
+<ion-header class="no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button *ngIf='!fromMain' color="light" text="{{'back' | translate}}" icon="chevron-back-outline" [style.font-size]="services.isIPad ? '25px' : '17px'"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="{{ 'lang' | translate }}">
+  <div class="bgTop" class="ion-padding">
+    <form (ngSubmit)="onSubmitRegister(f)" #f="ngForm">
+      <div>
+        <div align="center">
+          <h1 [style.font-size]="services.isIPad ? '40px' : '26px'">
+            <span fill="solid" bold color="primary">{{ 'register' | translate}}</span>
+          </h1>
+          <p [style.font-size]="services.isIPad ? '25px' : '16px'">
+            <span color="medium">{{ 'sign_up' | translate}}</span>
+          </p>
+        </div>
+
+        <div>
+          <ion-list>
+            <ion-item class="ion-no-padding">
+              <ion-label position="floating" color="medium" [style.font-size]="services.isIPad ? '25px' : '13px'">{{'name' | translate}}</ion-label>
+              <ion-input [(ngModel)]="name" type="text" name="name" required [style.font-size]="services.isIPad ? '26px' : '17px'"></ion-input>
+            </ion-item>
+
+            <ion-item class="ion-no-padding">
+              <ion-label position="floating" color="medium" [style.font-size]="services.isIPad ? '25px' : '13px'">{{'email' | translate}}</ion-label>
+              <ion-input [(ngModel)]="email" type="email" name="email" required [style.font-size]="services.isIPad ? '26px' : '17px'"></ion-input>
+            </ion-item>
+
+            <ion-item class="ion-no-padding">
+              <ion-label position="floating" color="medium" [style.font-size]="services.isIPad ? '25px' : '13px'">{{'password' | translate}}</ion-label>
+              <ion-input [(ngModel)]="password" type="password" name="password" required [style.font-size]="services.isIPad ? '26px' : '17px'"></ion-input>
+            </ion-item>
+
+            <ion-item class="ion-no-padding">
+              <ion-label position="floating" color="medium" [style.font-size]="services.isIPad ? '25px' : '13px'">{{'confirm_password' | translate}}</ion-label>
+              <ion-input [(ngModel)]="password_confirmation" type="password" name="password_confirmation" required [style.font-size]="services.isIPad ? '26px' : '17px'">
+              </ion-input>
+            </ion-item>
+
+            <ion-item class="ion-no-padding">
+              <ion-label position="floating" color="medium" [style.font-size]="services.isIPad ? '25px' : '13px'">{{'phone' | translate}}</ion-label>
+              <ion-input [(ngModel)]="phone" type="number" name="phone" required [style.font-size]="services.isIPad ? '26px' : '17px'"></ion-input>
+            </ion-item>
+
+            <ion-item class="ion-no-padding">
+              <ion-label position="floating" color="medium" [style.font-size]="services.isIPad ? '25px' : '13px'">{{'country' | translate}}</ion-label>
+              <ion-select [(ngModel)]="country_id" name="country_id" required [style.font-size]="services.isIPad ? '26px' : '17px'">
+                <ion-select-option *ngFor="let res of country ;" value="{{ res.country_id }}">
+                  {{ res.country_name }}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item class="ion-no-padding">
+              <ion-label position="floating" color="medium" [style.font-size]="services.isIPad ? '25px' : '13px'">{{'nationality' | translate}}</ion-label>
+              <ion-select [(ngModel)]="nationality_id" name="nationality_id" required [style.font-size]="services.isIPad ? '26px' : '17px'">
+                <ion-select-option *ngFor="let res of country ;" value="{{ res.country_id }}">
+                  {{ res.country_name }}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item class="ion-no-padding">
+              <ion-label position="floating" color="medium" [style.font-size]="services.isIPad ? '25px' : '13px'">{{'subject'|translate}}</ion-label>
+              <ion-select multiple="true" [(ngModel)]="subject_id" name="subject_id" required multible [style.font-size]="services.isIPad ? '26px' : '17px'">
+                <ion-select-option *ngFor="let res of subject ;" value="{{ res.subject_id }}">
+                  {{ userLang == 'ar' ? res.subject_title : res.subject_title_english }}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item class="ion-no-padding">
+              <ion-label position="floating" color="medium" [style.font-size]="services.isIPad ? '25px' : '13px'">{{'account_type' | translate}}</ion-label>
+              <ion-select [(ngModel)]="accountType" name="accountType" required [style.font-size]="services.isIPad ? '26px' : '17px'">
+                <ion-select-option value="1">{{'acc_student' | translate}}</ion-select-option>
+                <ion-select-option value="2">{{'acc_parent' | translate}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+          </ion-list>
+        </div>
+
+        <div class="note" [style.font-size]="services.isIPad ? '18px' : '12px'">
+          {{'when_signup' | translate}}<a class="policy" (click)="gotoTerms()" [style.font-size]="services.isIPad ? '22px' : '13px'">{{'terms_service' | translate}}</a>
+        </div>
+        
+        <div align="center">
+          <ion-button class="btn-submit" [disabled]="!f.valid" type="submit" color="primary" [style.font-size]="services.isIPad ? '26px' : '17px'">
+            {{'register' | translate}}
+          </ion-button>
+        </div>
+      </div>
+    </form>
+    <br>
+    <p align="center" class="footer">
+      <span color="medium" [style.font-size]="services.isIPad ? '24px' : '13px'">{{'already_user' | translate}}</span>
+      <ion-button fill="clear" color="primary" (click)="login()" [style.font-size]="services.isIPad ? '28px' : '15px'">{{'login' | translate}}</ion-button>
+    </p>
+  </div>
+</ion-content>

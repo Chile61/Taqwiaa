@@ -1,0 +1,61 @@
+.header-md::after,
+.tabs-md[tabsPlacement="top"] > .tabbar::after,
+.footer-md::before,
+.tabs-md[tabsPlacement="bottom"] > .tabbar::before {
+  background-image: none;
+}
+h1,
+h3,
+h5,
+p {
+  font-family: unset !important;
+  font-weight: 300 !important;
+}
+p {
+  line-height: 25px;
+}
+.top-title {
+  .title {
+    font-weight: 800 !important;
+  }
+}
+.descript {
+  .article {
+    margin-top: 10%;
+    .art {
+      font-weight: 500 !important;
+    }
+  }
+  .subtitle {
+    margin-top: 7%;
+    .sub {
+      font-weight: 400 !important;
+    }
+  }
+  .desc {
+  }
+  .steps {
+    padding-left: 17px;
+    .step1 {
+    }
+    .step2 {
+    }
+    .step {
+    }
+  }
+}
+.btn-submit {
+  margin-top: 13%;
+  margin-bottom: 5%;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  --background: linear-gradient(to left, #14317d, #2b5fe7) !important;
+  --border-radius: 10px;
+}
+
+ion-toolbar {
+  .tool_btn {
+    font-size: 13px;
+  }
+}

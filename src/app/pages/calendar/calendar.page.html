@@ -1,0 +1,187 @@
+<ion-content class="{{ 'lang-calender' | translate }}">
+  <ion-button fill="clear" [style.font-size]="services.isIPad ? '22px' : '13px'" (click)="navCtrl.pop()">
+    <ion-icon name="chevron-back" slot="icon-only"></ion-icon>
+    {{'back' | translate}}
+  </ion-button>
+  <div align="center" class="ion-padding-start ion-padding-end ion-padding-bottom">
+    <p class="ion-no-margin" [style.font-size]="services.isIPad ? '26px' : '16px'">{{'Book a Session' | translate}}</p>
+  </div>
+  <div class="flex-d" class="ion-padding">
+    <div class="flex" slot="start">
+      <div class="img">
+        <img class="ion-no-margin" src="{{ image_url }}{{ info?.personalImage }}" [style.height]="services.isIPad ? '160px' : '60px'">
+      </div>
+      <div class="name" align="center">
+        <h2 class="ion-no-margin" [style.font-size]="services.isIPad ? '33px' : '20px'">
+          <span color="medium">{{ language == 'ar' ? info?.name_ar : info?.name }}</span>
+        </h2>
+        <p class="ion-no-margin" [style.font-size]="services.isIPad ? '23px' : '14px'">
+          <span class="subjName">
+            {{subjName}}
+          </span>
+        </p>
+        <form>
+          <fieldset>
+            <span class="star-cb-group">
+              <ion-icon name="star" class="gold" *ngIf="info?.rank > 0" [style.font-size]="services.isIPad ? '25px' : '12px'"></ion-icon>
+              <ion-icon name="star" class="gold" *ngIf="info?.rank > 1" [style.font-size]="services.isIPad ? '25px' : '12px'"></ion-icon>
+              <ion-icon name="star" class="gold" *ngIf="info?.rank > 2" [style.font-size]="services.isIPad ? '25px' : '12px'"></ion-icon>
+              <ion-icon name="star" class="gold" *ngIf="info?.rank > 3" [style.font-size]="services.isIPad ? '25px' : '12px'"></ion-icon>
+              <ion-icon name="star" class="gold" *ngIf="info?.rank > 4" [style.font-size]="services.isIPad ? '25px' : '12px'"></ion-icon>
+            </span>
+          </fieldset>
+        </form>
+      </div>
+      <div class="btn">
+        <button ion-button class="custom-btn" color="medium" expand="block">
+          <span color="dark" [style.font-size]="services.isIPad ? '23px' : '16px'">
+            {{ info?.perHOur  }}
+          </span>
+          <br>
+          <span class="hourly" [style.font-size]="services.isIPad ? '20px' : '13px'">{{'kd' | translate}} {{'per_hour' | translate}}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="ion-no-margin ion-margin-start" [style.font-size]="services.isIPad ? '33px' : '24px'">
+    <span color="dark">{{'select_date' | translate}}</span>
+  </h2>
+
+  <ion-card color="light" margin-vertical>
+    <ion-card-content>
+      <div class="flex-d calendar">
+        <div class="arrow">
+          <div>
+            <ion-button fill="clear" color="primary" (click)="prevMonth()">
+              <ion-icon name="chevron-back"></ion-icon>
+            </ion-button>
+          </div>
+          <div align="center">
+            <h2 class="ion-no-margin" [style.font-size]="services.isIPad ? '25px' : '16px'">
+              <span color="dark">{{month}}</span>
+            </h2>
+            <p class="ion-no-margin" [style.font-size]="services.isIPad ? '23px' : '14px'">
+              <span class="sday">
+                {{smonth}} {{numDay}}
+              </span>
+            </p>
+          </div>
+          <div>
+            <ion-button fill="clear" color="primary" (click)="nextMonth()">
+              <ion-icon name="chevron-forward"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+
+        <!-- <div class="days ion-margin-top">
+          <span bold *ngFor="let day of weekDayName; let i = index">
+            <span color="medium">{{day}}</span>
+          </span>
+        </div> -->
+        <div class="ion-margin-top" color="medium">
+          <ion-slides pager="false" class="swiper-container" #daysSlide [options]="BannerOption">
+            <ion-slide *ngFor="let day of days">
+              <p color="dark" (click)="checkday(day)" [ngClass]="day == numDay ? 'today': ''" [style.font-size]="services.isIPad ? '26px' : '18px'">{{day}}</p>
+            </ion-slide>
+          </ion-slides>
+        </div>
+        <div></div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <h2 class="ion-no-margin ion-margin-start" [style.font-size]="services.isIPad ? '33px' : '24px'">
+    <span color="dark">{{'select_time' | translate}}</span>
+  </h2>
+
+  <ion-card color="light" margin-vertical>
+    <ion-card-content>
+      <div class="flex-d calendar time">
+        <div class="arrow">
+          <div>
+            <ion-button fill="clear" color="primary" (click)="PrevTime()">
+              <ion-icon name="chevron-back"></ion-icon>
+            </ion-button>
+          </div>
+          <div align="center">
+            <h2 class="ion-no-margin" [style.font-size]="services.isIPad ? '25px' : '16px'">
+              <span color="dark">{{time}}</span>
+            </h2>
+            <p class="ion-no-margin" [style.font-size]="services.isIPad ? '23px' : '14px'">
+              <span class="sday">
+                {{smonth}} {{numDay}}
+              </span>
+            </p>
+          </div>
+          <div>
+            <ion-button fill="clear" color="primary" (click)="nextTime()">
+              <ion-icon name="chevron-forward"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+        <div class="ion-margin-top" color="medium">
+          <ion-slides pager="false" class="swiper-container" [options]="numOptions">
+            <ion-slide (click)="checkhour(hour)" *ngFor="let hour of [1,2,3,4,5,6,7,8,9,11,12]">
+              <span color="dark" [ngClass]="{'today': hour == selectedHour }" [style.font-size]="services.isIPad ? '26px' : '18px'">{{hour}}</span>
+            </ion-slide>
+          </ion-slides>
+        </div>
+        <div></div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <h2 class="ion-no-margin ion-margin-start" [style.font-size]="services.isIPad ? '33px' : '24px'">
+    <span color="dark">{{'Select Hour' | translate}}</span>
+  </h2>
+
+  <ion-card color="light" margin-vertical><!-- dir="ltr"-->
+    <ion-card-content>
+      <div class="flex-d calendar hour">
+        <div class="arrow">
+          <div>
+            <ion-button fill="clear" color="primary" (click)="PrevTime()">
+              <ion-icon name="chevron-back"></ion-icon>
+            </ion-button>
+          </div>
+          <div align="center">
+            <h2 class="ion-no-margin" [style.font-size]="services.isIPad ? '25px' : '16px'">
+              <span color="dark">{{'hour' | translate}}</span>
+            </h2>
+            <p class="ion-no-margin" [style.font-size]="services.isIPad ? '23px' : '14px'">
+              <span class="sday">
+                {{numDay}} {{smonth}} {{selectedHour}}{{stime}}
+              </span>
+            </p>
+          </div>
+          <div>
+            <ion-button fill="clear" color="primary" (click)="nextTime()">
+              <ion-icon name="chevron-forward"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+        <div class="num ion-margin-top" color="medium">
+          <ion-slides pager="false" class="swiper-container" fxFlex="auto" [options]="numOptions">
+            <ion-slide (click)="pickhour(hour)" *ngFor="let hour of [1,2,3,4,5,6,7,8,9,11,12]">
+              <span class="hour" [ngClass]="{'today': hour == duration }" [style.font-size]="services.isIPad ? '23px' : '13px'">{{hour}} {{'hour' | translate}}</span>
+            </ion-slide>
+          </ion-slides>
+        </div>
+        <div></div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <div style="text-align: center;">
+    <img src="/assets/img/Capture.PNG" (click)="launchLocationPage()">
+  </div>
+
+  <div class="ion-padding" align="center">
+    <ion-button class="btn-submit" (click)="bookNow()" *ngIf="selectedHour" [style.height]="services.isIPad ? '60px' : '45px'">
+      <span class="price" [style.font-size]="services.isIPad ? '23px' : '16px'" [style]="language == 'en' ? 'margin-right: 30%' : 'margin-left: 30%'">{{price}} kd {{'to' | translate}} {{duration}} {{'hours' | translate}}</span>
+      <span class="book" [style.font-size]="services.isIPad ? '23px' : '16px'">{{'Book now' | translate}}</span>
+    </ion-button>
+  </div>
+
+</ion-content>

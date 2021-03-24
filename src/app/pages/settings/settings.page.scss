@@ -1,0 +1,77 @@
+ion-content {
+  margin-top: 20px; /* Status bar height on iOS 10 */
+  margin-top: constant(safe-area-inset-top); /* Status bar height on iOS 11.0 */
+  margin-top: env(safe-area-inset-top); /* Status bar height on iOS 11+ */
+}
+
+.headSlider{
+  height: 40vh;
+  width: 100%;
+  border-radius: 0 !important
+}
+
+.cotegories{
+  .categorySlider{
+    img{
+      margin-right: 5px;
+      height: 100px;
+    }
+    .name{
+      margin-bottom: 10px;
+    }
+    h5 {
+      font-size: 13px;
+      margin: 5px 0;
+    }
+    p {
+      font-size: 11px
+    }
+    .swiper.s-wrapper .swiper-pagination{
+      display: none !important;
+    }
+  }
+}
+ion-toolbar{
+  --ion-toolbar-background-color : rgba(252, 252, 252, 0);
+  position: absolute;
+}
+ion-searchbar{
+  position: absolute;
+  z-index: 999;
+}
+:host{
+  input,.searchbar-input.sc-ion-searchbar-md{
+    border-radius: 22px !important;
+  }
+
+}
+.searchbar-input-container.sc-ion-searchbar-md{
+  border-radius: 22px !important;
+  overflow: hidden !important;
+}
+ion-searchbar{
+  --ion-background-color: rgba(252, 252, 252, 0.81);
+  border-radius: 22px;
+  overflow: hidden;
+  padding: 0;
+  margin: 10px 0;
+}
+.taq-link {
+  text-decoration: none;
+}
+
+img {
+  width: 24px;
+}
+
+.menu_img {
+  margin: 8px 10px 8px 2px;
+}
+
+.menu_img_1 {
+  margin: 8px 4px 8px -4px;
+}
+
+ion-icon {
+  margin-right: 10px;
+}

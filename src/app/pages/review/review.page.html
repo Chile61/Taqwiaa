@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons class="goback" slot="start">
+      <ion-button fill="clear" color="primary" (click)="TabsPage()" [style.font-size]="services.isIPad ? '22px' : '14px'">
+        <ion-icon name="chevron-back"></ion-icon>
+        {{'back' | translate}}
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button type="submit" color="primary" [disabled]="!f.valid" (click)="onSubmitReview(f)" [style.font-size]="services.isIPad ? '22px' : '14px'">
+        {{'done' | translate}}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" class="{{ 'lang' | translate }}">  
+
+  <p class="bar-button-md-dark" [style.font-size]="services.isIPad ? '30px' : '16px'">
+    {{ 'Write a review' | translate }}
+  </p>
+
+  <form (ngSubmit)="onSubmitReview(f)" #f="ngForm">
+
+    <div class="flex">
+      <ion-list radio-group name="rating" required>
+        <span class="star-cb-group">
+          <ion-radio id="rating-5" value="5"></ion-radio><label (click)="ratings(5)" for="rating-5" id="rank-5">5</label>
+          <ion-radio id="rating-4" value="4"></ion-radio><label (click)="ratings(4)" for="rating-4" id="rank-4">4</label>
+          <ion-radio id="rating-3" value="3"></ion-radio><label (click)="ratings(3)" for="rating-3" id="rank-3">3</label>
+          <ion-radio id="rating-2" value="2"></ion-radio><label (click)="ratings(2)" for="rating-2" id="rank-2">2</label>
+          <ion-radio id="rating-1" value="1"></ion-radio><label (click)="ratings(1)" for="rating-1" id="rank-1">1</label>
+        </span>
+      </ion-list>
+    </div>
+
+    <div align="center">
+      <p class="ion-no-margin" class="bar-button-md-medium" [style.font-size]="services.isIPad ? '25px' : '16px'">
+        {{ 'Tap a star to rate' | translate }}
+      </p>
+    </div>
+
+    <ion-list class="reviews">
+      <ion-item class="review-title ion-no-padding">
+        <ion-input type="text" [(ngModel)]="rtitle" name="rtitle" placeholder="{{ 'Review Title' | translate }}" [style.font-size]="services.isIPad ? '26px' : '17px'">
+        </ion-input>
+      </ion-item>
+      <ion-item class="review-title ion-no-padding">
+        <ion-textarea [(ngModel)]="rtext" name="rtext" placeholder="{{ 'Enter a description' | translate }}" [style.font-size]="services.isIPad ? '26px' : '17px'">
+        </ion-textarea>
+      </ion-item>
+    </ion-list>
+
+  </form>
+
+</ion-content>

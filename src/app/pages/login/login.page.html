@@ -1,0 +1,60 @@
+<ion-header class="no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button *ngIf='fromMain' fill="clear" color="light" class="back_btn" (click)="gotoMain()" [style.font-size]="services.isIPad ? '25px' : '17px'">
+        <ion-icon name="chevron-back-outline" slot="start" style="font-size: 25px; margin-right: 6px;"></ion-icon>
+        {{'back' | translate}}
+      </ion-button>
+
+      <ion-back-button *ngIf='!fromMain' color="light" text="{{'back' | translate}}" icon="chevron-back-outline" [style.font-size]="services.isIPad ? '25px' : '17px'"></ion-back-button>
+    </ion-buttons>    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="{{ 'lang' | translate }}">
+  <form (ngSubmit)="onSubmitLogin(f)" #f="ngForm">
+    <div class="bgTop" padding>
+
+      <div>
+        <div align="center">
+          <h1 [style.font-size]="services.isIPad ? '40px' : '26px'">
+            {{'login' | translate}}
+          </h1>
+          <p [style.font-size]="services.isIPad ? '25px' : '16px'">
+            {{'sign_in' | translate}}
+          </p>
+        </div>
+
+        <div class="ion-padding">
+          <ion-list>
+            <ion-item class="ion-no-padding">
+              <ion-label position="floating" color="medium" [style.font-size]="services.isIPad ? '25px' : '13px'">{{'email' | translate}}</ion-label>
+              <ion-input [(ngModel)]="email" type="email" name="email" required [style.font-size]="services.isIPad ? '26px' : '17px'"></ion-input>
+            </ion-item>
+
+            <ion-item class="ion-no-padding">
+              <ion-label position="floating" color="medium" [style.font-size]="services.isIPad ? '25px' : '13px'">{{'password' | translate}}</ion-label>
+              <ion-input [(ngModel)]="password" name="password" required type="password" [style.font-size]="services.isIPad ? '26px' : '17px'"></ion-input>
+            </ion-item>
+          </ion-list>
+
+          <div class="forgot-pass">
+            <a href="http://taqwiaa.com/public/password/reset">
+              <ion-button fill="clear" style="color: gray;" [style.font-size]="services.isIPad ? '21px' : '13px'">{{'forget_password' | translate}}</ion-button>
+            </a>
+          </div>
+        </div>
+        <br>
+        <div class="ion-padding-bottom" align="center">
+          <ion-button class="btn-submit" type="submit" [disabled]="!f.valid" [style.font-size]="services.isIPad ? '25px' : '16px'">{{ 'login' | translate}}</ion-button>
+        </div>
+      </div>
+
+    </div>
+  </form>
+
+  <div text-center class="footer">
+    <p class="bar-button-md-medium" [style.font-size]="services.isIPad ? '21px' : '12px'">{{'have_account' | translate}}</p>
+    <ion-button fill="clear" color="primary" (click)="createAccount()" [style.font-size]="services.isIPad ? '25px' : '17px'">{{'create_account' | translate}}</ion-button>
+  </div>
+</ion-content>

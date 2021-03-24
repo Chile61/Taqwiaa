@@ -1,0 +1,17 @@
+<ion-header no-border class="{{ 'lang' | translate }}">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button class="tool_btn" color="dark" text="{{'back' | translate}}" icon="chevron-back-outline" [style.font-size]="services.isIPad ? '21px' : '13px'"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title align="center" [style.font-size]="services.isIPad ? '27px' : '17px'">
+      {{'about_us' | translate}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="{{ 'lang' | translate }} ion-padding">
+   	<p [style.font-size]="services.isIPad ? '25px' : '16px'">
+   	{{ language == 'ar' ? about : about_english }}
+   	</p>
+</ion-content>

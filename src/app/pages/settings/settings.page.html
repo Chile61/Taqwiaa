@@ -1,0 +1,81 @@
+<ion-content class="{{ 'lang' | translate }}">
+
+  <div class="content-container">
+    <ion-slides *ngIf="slider" #recentSlider [options]="sliderConfig" loop slidesPerView="1">
+      <ion-slide *ngFor="let slide of slider">
+        <div>
+          <img class="headSlider" src="{{ imageUrl }}/{{ slide.image }}">
+        </div>
+      </ion-slide>
+    </ion-slides>    
+  </div>
+
+  <div class="content ion-padding">
+    <ion-list bg-none>
+
+      <!-- <a class="taq-link" href="http://taqwiaa.com/register">
+        <ion-item class="ion-no-padding" [style.font-size]="services.isIPad ? '23px' : '17px'" [style.margin-top]="services.isIPad ? '8px' : '1px'" (click)="becomeTeacher()">          
+          <img src="assets/icon/calendar.png" class="menu_img" item-start>
+          {{'become_teacher' | translate}}
+        </ion-item>
+      </a> -->
+
+      <ion-item class="ion-no-padding" [style.font-size]="services.isIPad ? '23px' : '17px'" [style.margin-top]="services.isIPad ? '8px' : '1px'" (click)="becomeTeacher()">        
+        <img src="assets/icon/calendar.png" class="menu_img" item-start>
+        {{'become_teacher' | translate}}
+      </ion-item>
+
+      <ion-item class="ion-no-padding" (click)="navigate('packages')" [style.font-size]="services.isIPad ? '23px' : '17px'" [style.margin-top]="services.isIPad ? '8px' : '1px'">        
+        <img src="assets/icon/hard.png" class="menu_img" item-start>
+        {{'packages' | translate}}
+      </ion-item>
+
+      <ion-item class="ion-no-padding" (click)="changeLang()" [style.font-size]="services.isIPad ? '23px' : '17px'" [style.margin-top]="services.isIPad ? '8px' : '1px'">
+        <ion-icon name="language" color="primary" item-start style="font-size: 27px;"></ion-icon>
+        {{'change_lang' | translate}}
+      </ion-item>
+
+      <ion-item class="ion-no-padding" (click)="navigate('contact')" [style.font-size]="services.isIPad ? '23px' : '17px'" [style.margin-top]="services.isIPad ? '8px' : '1px'">        
+        <img src="assets/icon/proflie.png" class="menu_img_1" item-start style="width: 35px;">
+        {{'contact_us' | translate}}
+      </ion-item>
+
+      <ion-item class="ion-no-padding" (click)="navigate('about-us')" [style.font-size]="services.isIPad ? '23px' : '17px'" [style.margin-top]="services.isIPad ? '8px' : '1px'">        
+        <img src="assets/icon/info.png" class="menu_img" item-start>
+        {{'about_us' | translate}}
+      </ion-item>
+
+      <ion-item class="ion-no-padding" (click)="navigate('terms')" [style.font-size]="services.isIPad ? '23px' : '17px'" [style.margin-top]="services.isIPad ? '8px' : '1px'">        
+        <img src="assets/icon/protect.png" class="menu_img" item-start>
+        {{'privacy_policy' | translate}}
+      </ion-item>
+
+      <ion-item class="ion-no-padding" (click)="navigate('help')" [style.font-size]="services.isIPad ? '23px' : '17px'" [style.margin-top]="services.isIPad ? '8px' : '1px'">        
+        <img src="assets/icon/shutting.png" class="menu_img" item-start>
+        {{'help_center' | translate}}
+      </ion-item>
+
+      <ion-item class="ion-no-padding" (click)="navigate('help')" [style.font-size]="services.isIPad ? '23px' : '17px'" [style.margin-top]="services.isIPad ? '8px' : '1px'">        
+        <img src="assets/icon/megaphone.png" class="menu_img" item-start>
+        {{'advertise' | translate}}
+      </ion-item>
+
+      <!-- <ion-item *ngIf="language=='ar'"  (click)="langChang('en')">
+        <ion-icon name="md-refresh" color="primary" item-start></ion-icon>
+        {{'english' | translate}}
+      </ion-item>
+      <ion-item *ngIf="language=='en'"  (click)="langChang('ar')">
+        <ion-icon name="md-refresh" color="primary" item-start></ion-icon>
+        {{'arabic' | translate}}
+      </ion-item> -->
+      <ion-item class="ion-no-padding" *ngIf="isAuth" (click)="logout()" [style.font-size]="services.isIPad ? '23px' : '17px'" [style.margin-top]="services.isIPad ? '8px' : '1px'">
+        <ion-icon name="power" color="primary" item-start style="font-size: 27px;"></ion-icon>
+        {{'logout' | translate}}
+      </ion-item>
+      <ion-item class="ion-no-padding" *ngIf="!isAuth" (click)="LoginPage()" [style.font-size]="services.isIPad ? '23px' : '17px'" [style.margin-top]="services.isIPad ? '8px' : '1px'">
+        <ion-icon name="power" color="primary" item-start style="font-size: 27px;"></ion-icon>
+        {{'login' | translate}}
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

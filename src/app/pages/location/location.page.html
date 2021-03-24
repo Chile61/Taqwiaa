@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="close()">{{'cancel' | translate}}</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" [disabled]="saveDisabled" (click)="save()">{{'save' | translate}}</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="{{ 'lang' | translate }}">
+
+  <div class="search-content">
+    <ion-searchbar [(ngModel)]="query" (ionInput)="searchPlace()" icon-end placeholder="Search here" id="searchText">
+    </ion-searchbar>
+    <!-- touchstart -->
+    <ion-list class="search-result-list ion-padding-start ion-padding-end">
+      <ion-item class="ion-no-padding" *ngFor="let place of places" (click)="selectPlace(place)">{{place.description}}</ion-item>
+    </ion-list>
+  </div>
+
+  <div #pleaseConnect id="please-connect">
+    <p>{{'connect' | translate}}</p>
+  </div>
+
+  <div class="map-wrapper">    
+    <div #map id="map"></div>
+  </div>
+
+  <!-- <div class="map-container" #map id="map">
+    <ion-spinner></ion-spinner>
+  </div> -->
+
+</ion-content>

@@ -1,0 +1,122 @@
+ion-content {
+  margin-top: 20px; /* Status bar height on iOS 10 */
+  margin-top: constant(safe-area-inset-top); /* Status bar height on iOS 11.0 */
+  margin-top: env(safe-area-inset-top); /* Status bar height on iOS 11+ */
+}
+.headSlider{
+  height: 40vh;
+  width: 100%;
+  border-radius: 0 !important
+}
+.search_div {  
+  padding: 0 7%;
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+}
+.categories{
+  .categorySlider{
+    
+    img{
+      margin-right: 0px;
+      height: auto;
+      border-radius: 5px;
+      width: 100%;
+    }
+    .name{
+      margin-bottom: 10px;
+      text-align: left;        
+      width: 100%;
+      p {
+        color: gray;
+      }
+    }
+    h5 {
+      font-size: 13px;
+      margin: 5px 0;
+    }
+    p {
+      font-size: 11px;
+      margin: 5px;
+    }
+    .swiper.s-wrapper .swiper-pagination{
+      display: none !important;
+    }
+    .swiper-wrapper {
+      width: 30%;
+    }
+  }
+}
+ion-toolbar{
+  --ion-toolbar-background-color : rgba(252, 252, 252, 0);
+  position: absolute;
+}
+
+:host{
+  input,.searchbar-input.sc-ion-searchbar-md{
+    border-radius: 22px !important;
+  }
+
+}
+.searchbar-input-container.sc-ion-searchbar-md{
+  border-radius: 22px !important;
+  overflow: hidden !important;
+}
+ion-searchbar{
+  --background: rgb(241 239 239 / 71%);
+  border-radius: 22px;
+  overflow: hidden;
+  padding: 0;
+  margin: 10px 0;
+  z-index: 999;
+}
+.swiper-slide {
+  display: flex;
+  flex-direction: column;
+}
+.categorySlider {
+    margin-top: 5px;
+    // display: -webkit-box;
+    // overflow: scroll;
+
+    img {
+      border: solid 1px #ecb6b6;
+    }
+}
+.filter {
+  float: right;
+}
+.taq-ar .filter {
+  float: left;
+}
+.item-inner, .item-input , .item-select ,.item  {
+  background-color: unset !important;
+}
+.item-inner {
+  border-bottom: unset !important;
+}
+.top-title {
+  h5 {
+    display: inline-block;
+    color: darkblue;
+    font-size: 20px;
+    font-weight: 800;
+  }
+
+}
+.cat-title{
+  ion-label {
+    margin-bottom: 0px;
+  }
+  p {
+    color: darkblue;
+  }
+
+}
+p {
+  color: darkblue;
+}
+
+.each_div {  
+  width: 95%;
+}

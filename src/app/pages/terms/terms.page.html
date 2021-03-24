@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button class="tool_btn" color="dark" text="{{'back' | translate}}" icon="chevron-back-outline" [style.font-size]="services.isIPad ? '21px' : '13px'"></ion-back-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button class="tool_btn" color="gray" [style.font-size]="services.isIPad ? '21px' : '13px'">
+        <ion-icon name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" class="{{ 'lang' | translate }}">
+  <div class="top-title" align="center">
+    <h1 style="margin-top: 0;" class="title" [style.font-size]="services.isIPad ? '36px' : '26px'">{{'terms' | translate}}</h1>
+  </div>
+
+  <div class="descript">
+    <div class="article">
+      <h3 class="art" [style.font-size]="services.isIPad ? '30px' : '22px'">{{'article' | translate}}</h3>
+    </div>
+
+    <div class="subtitle">
+      <h5 class="sub" [style.font-size]="services.isIPad ? '25px' : '18px'">{{'who may use' | translate}}</h5>
+    </div>
+    <div class="desc">
+      <p [style.font-size]="services.isIPad ? '22px' : '16px'">{{'desc1' | translate}}</p>
+    </div>
+    <div class="steps">
+      <div class="step1">
+        <p [style.font-size]="services.isIPad ? '20px' : '16px'"><span class="step">{{'step1' | translate}}</span>{{'stepdesc1' | translate}}</p>
+      </div>
+      <div class="step2">
+        <p [style.font-size]="services.isIPad ? '20px' : '16px'"><span class="step">{{'step2' | translate}}</span>{{'stepdesc2' | translate}}</p>
+      </div>
+    </div>
+
+    <div class="subtitle">
+      <h5 class="sub" [style.font-size]="services.isIPad ? '25px' : '18px'">{{'privacy' | translate}}</h5>
+    </div>
+    <div class="desc">
+      <p [style.font-size]="services.isIPad ? '22px' : '16px'">{{'desc1' | translate}}</p>
+    </div>
+  </div>
+
+  <div align="center">
+    <ion-button class="btn-submit" color="primary" [style.font-size]="services.isIPad ? '23px' : '16px'">
+      {{'continue and agree' | translate}}
+    </ion-button>
+  </div>
+</ion-content>

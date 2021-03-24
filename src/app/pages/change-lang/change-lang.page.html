@@ -1,0 +1,31 @@
+<ion-header class="{{ 'lang' | translate }}">
+  <ion-toolbar>
+    <ion-title [style.font-size]="services.isIPad ? '27px' : '17px'">{{'change_lang' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="{{ 'lang' | translate }}">
+  <div class="ion-padding">
+    <ion-list>
+      <ion-radio-group mode="ios" [(ngModel)]="lang">    
+        <ion-item class="ion-no-padding" lines="none">
+          <ion-label [style.font-size]="services.isIPad ? '28px' : '17px'">{{'english' | translate}}</ion-label>
+          <ion-radio slot="end" value="en"></ion-radio>
+        </ion-item>
+        <br>
+        <ion-item class="ion-no-padding" lines="none">
+          <ion-label [style.font-size]="services.isIPad ? '28px' : '17px'">{{'arabic' | translate}}</ion-label>
+          <ion-radio slot="end" value="ar"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+  </div>
+  
+  <div class="btn_div">
+    <div align="center">
+      <ion-button (click)="cancel()" [style.font-size]="services.isIPad ? '25px' : '16px'" class="cancel_btn">{{'cancel' | translate}}</ion-button>
+      <ion-button (click)="changeLang()" [style.font-size]="services.isIPad ? '25px' : '16px'">{{'ok' | translate}}</ion-button>
+    </div>
+  </div>
+    
+</ion-content>

@@ -1,0 +1,49 @@
+<ion-header no-border class="{{ 'lang' | translate }}">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button class="tool_btn" color="dark" text="{{'back' | translate}}" icon="chevron-back-outline" [style.font-size]="services.isIPad ? '21px' : '13px'"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title align="center" [style.font-size]="services.isIPad ? '27px' : '17px'">
+      {{'contact_us' | translate}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="{{ 'lang' | translate }}">
+  <div class="bgTop" class="ion-padding">
+    <form (ngSubmit)="onSubmitContact(f)" #f="ngForm">
+      <div class="flex">        
+        <div>
+          <ion-list>
+            <ion-item class="ion-no-padding">
+              <ion-label position="floating" color="medium" [style.font-size]="services.isIPad ? '23px' : '13px'">{{'name' | translate}}</ion-label>
+              <ion-input [(ngModel)]="name" name="name" required type="text" [style.font-size]="services.isIPad ? '25px' : '17px'"></ion-input>
+            </ion-item>
+
+            <ion-item class="ion-no-padding">
+              <ion-label position="floating" color="medium" [style.font-size]="services.isIPad ? '23px' : '13px'">{{'email' | translate}}</ion-label>
+              <ion-input [(ngModel)]="email" type="email" name="email" required [style.font-size]="services.isIPad ? '25px' : '17px'"></ion-input>
+            </ion-item>
+
+            <ion-item class="ion-no-padding">
+              <ion-label position="floating" color="medium" [style.font-size]="services.isIPad ? '23px' : '13px'">{{'subject' | translate}}</ion-label>
+              <ion-input [(ngModel)]="subject" type="text" name="subject" required [style.font-size]="services.isIPad ? '25px' : '17px'"></ion-input>
+            </ion-item>
+
+            <ion-item class="ion-no-padding">
+              <ion-label position="floating" color="medium" [style.font-size]="services.isIPad ? '23px' : '13px'">{{'message' | translate}}</ion-label>
+              <ion-textarea [(ngModel)]="message" type="text" name="message" required [style.font-size]="services.isIPad ? '25px' : '17px'"></ion-textarea>
+            </ion-item>
+          </ion-list>
+        </div>
+        <br>
+        <div align="center">
+          <ion-button class="btn-submit" type="submit" [disabled]="!f.valid" color="primary" [style.font-size]="services.isIPad ? '25px' : '16px'">
+            {{'contact_us' | translate}}
+          </ion-button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ion-content>
